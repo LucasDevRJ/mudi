@@ -15,16 +15,8 @@ import br.com.alura.mvc.mudi.model.Pedido;
 
 @Controller
 public class HomeController {
-	
-	@PersistenceContext
-	private EntityManager entityManager;
-
 	@GetMapping("/home")
 	public String home(Model model) {
-		
-		Query query = entityManager.createQuery("SELECT p FROM Pedido p", Pedido.class);
-		List<Pedido> pedidos = query.getResultList();
-		
 		model.addAttribute("pedidos", pedidos);
 		
 		return "home";
@@ -35,7 +27,7 @@ public class HomeController {
 		Model model = new ExtendedModelMap();
 		
 		HomeController homeController = new HomeController();
-		homeController.home(model);
+		homeController.home(model.getAttribute("pedidos"));
 		
 	}
 }
