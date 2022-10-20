@@ -6,11 +6,14 @@
 	<body>
 		<div class="container">
 		
-			<nav class="navbar navbar-expand-lg bg-light">
-				<a href="">Todos</a>
-				<a href="">Aguardando</a>
-				<a href="">Aprovado</a>
-				<a href="">Entregue</a>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
+				<div class="navbar-nav">
+					<a class="nav-item nav-link active" href="">Todos</a>
+					<a class="nav-item nav-link" href="">Aguardando</a>
+					<a class="nav-item nav-link" href="">Aprovado</a>
+					<a class="nav-item nav-link" href="">Entregue</a>
+				</div>
+				<button class="btn btn-outline-secondary">Novo</button>
 			</nav>
 		
 				<div class="card" th:each="pedido : ${pedidos}">
