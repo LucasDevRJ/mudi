@@ -21,7 +21,7 @@ public class HomeController {
 	@Autowired
 	private PedidoRepository pedidoRepository;
 	
-	@GetMapping("/home")
+	@GetMapping
 	public String home(Model model) {
 		
 		List<Pedido> pedidos = pedidoRepository.findAll();
@@ -35,7 +35,7 @@ public class HomeController {
 		
 		List<Pedido> pedidos = pedidoRepository.findByStatus(StatusPedido.valueOf(status.toUpperCase()));
 		model.addAttribute("pedidos", pedidos);
-		
+		model.addAttribute("status", status);
 		return "home";
 	}
 	
