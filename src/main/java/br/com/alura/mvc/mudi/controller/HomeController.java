@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.alura.mvc.mudi.model.Pedido;
+import br.com.alura.mvc.mudi.model.StatusPedido;
 import br.com.alura.mvc.mudi.repository.PedidoRepository;
 
 @Controller
+@RequestMapping("/home")
 public class HomeController {
 	
 	@Autowired
@@ -20,6 +23,15 @@ public class HomeController {
 	public String home(Model model) {
 		
 		List<Pedido> pedidos = pedidoRepository.findAll();
+		model.addAttribute("pedidos", pedidos);
+		
+		return "home";
+	}
+	
+	@GetMapping("/aguardando")
+	public String aguardando(Model model) {
+		
+		List<Pedido> pedidos = pedidoRepository.findByStatus(StatusPedido.AGUARDANDO);
 		model.addAttribute("pedidos", pedidos);
 		
 		return "home";
