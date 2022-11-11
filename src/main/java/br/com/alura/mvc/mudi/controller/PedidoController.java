@@ -3,6 +3,7 @@ package br.com.alura.mvc.mudi.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +33,10 @@ public class PedidoController {
 			return "pedido/formulario";
 		}
 		
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		
 		Pedido pedido = requisicao.toPedido();
+		pedido.setUser(username);
 		pedidoRepository.save(pedido);
 		
 		return "redirect:/home";
