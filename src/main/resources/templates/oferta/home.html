@@ -1,6 +1,6 @@
 <html>
 	
-	<body>
+	<body onload="onLoad()" id="ofertas">
 		<head th:replace="~{base :: head}"></head>
 		
 		<div th:replace="~{base :: logo}"></div>
@@ -9,17 +9,17 @@
 		
 			<div th:replace="~{base :: titulo('Ãšltimos Pedidos')}"></div>
 		
-				<div class="card mb-3" th:each="pedido : ${pedidos}">
+				<div class="card mb-3" v-for="pedido in pedidos">
 				
-				<div class="card-header alert-dark" th:text="${pedido.nomeProduto}">Nome do produto</div>
+				<div class="card-header alert-dark">{{pedido.nomeProduto}}</div>
 				
 				<div class="card-body">
 					<div class="row">
 						<div class="col-12 col-sm-8 mb-3">
 						
 						<div class="row">
-							<div class="col-md-5">Valor do produto: <span th:if="${pedido.valorNegociado} != null" th:text="${#numbers.formatCurrency(pedido.valorNegociado)}">200,99</span></div>
-							<div class="col-md-7">Data da entrega: <span th:text="${#temporals.format(pedido.dataDaEntrega, 'dd/MM/yyyy')}">10/09/2020</span></div>
+							<div class="col-md-5">Valor do produto: <input/> </div>
+							<div class="col-md-7">Data da entrega: <input/> </div>
 						</div>
 						
 						<div>Produto</div>
@@ -40,5 +40,47 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			function onLoad() {
+				
+				var app = new Vue({
+					el: '#ofertas',
+					data: {
+						pedidos: [
+							{
+								"nomeProduto": "Tranya S2 Smartwatch",
+								"valorNegociado": 850,
+								"dataDaEntrega": "2022-07-12",
+								"urlProduto": "https://www.amazon.com.br/Tranya-Smartwatch-Rel%C3%B3gio-inteligente-Bluetooth/dp/B0BDDHB5Q1?ref=dlx_black_gd_dcl_img_15_93ee7a7a_dt_sl7_99",
+								"urlImagem": "https://m.media-amazon.com/images/I/71JOGEkJcyL._AC_SY450_.jpg",
+								"descricao": "Graças a um sensor de saúde 3 em 1, o relógio inteligente Tranya S2 pode fornecer rastreamento de saúde geral, permitindo rastrear com precisão a frequência cardíaca de 24 horas, oxigênio no sangue e qualidade do sono (profundo, leve e acordado).",
+								"status": "AGUARDANDO",
+								"user": {
+								"username": "matheus",
+								"password": "$2a$10$6LWmNXCgT4vzqWgTFtftvOHuD79SRDPxZL904HuLnfyExBUyb6Qqe",
+								"enabled": true
+							}
+							},
+							{
+								"nomeProduto": "Câmera Digital Canon",
+								"valorNegociado": 700,
+								"dataDaEntrega": "2022-05-15",
+								"urlProduto": "https://www.amazon.com.br/dp/B09QL7J9Q8?ref_=Oct_DLandingS_D_5064cb7a_NA",
+								"urlImagem": "https://m.media-amazon.com/images/I/81pz06ySqrL._AC_SX450_.jpg",
+								"descricao": "Dê os seus primeiros passos na fotografia e comece a contar suas histórias com a DSLR EOS Rebel T7+ e a lente zoom compacta EF-S 18-55mm IS II. Esta câmera de utilização fácil e intuitiva é indicada para principiantes e entusiastas.",
+								"status": "AGUARDANDO",
+								"user": {
+								"username": "matheus",
+								"password": "$2a$10$6LWmNXCgT4vzqWgTFtftvOHuD79SRDPxZL904HuLnfyExBUyb6Qqe",
+								"enabled": true
+							}
+							}
+								]
+					}
+				});
+			}
+		</script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</body>
 </html>
