@@ -1,13 +1,13 @@
 <html>
 	
-	<body onload="onLoad()" id="ofertas">
+	<body onload="onLoad()">
 		<head th:replace="~{base :: head}"></head>
 		
 		<div th:replace="~{base :: logo}"></div>
 		
-		<div class="container">
+		<div class="container" id="ofertas">
 		
-			<div th:replace="~{base :: titulo('Ãšltimos Pedidos')}"></div>
+			<div th:replace="~{base :: titulo('FaÃ§a a sua Oferta')}"></div>
 		
 				<div class="card mb-3" v-for="pedido in pedidos">
 				
@@ -23,17 +23,17 @@
 						</div>
 						
 						<div>Produto</div>
-						<div><input class="form-control" th:value="${pedido.urlProduto}" value="url do produto"/></div>
+						<div><a v-bind:href="pedido.urlProduto"/>{{pedido.nomeProduto}}</a></div>
 						
 						<div>DescriÃ§Ã£o</div>
 						<div>
-							<textarea class="form-control" th:text="${pedido.descricao}">Descriï¿½ï¿½o do pedido</textarea>
+							<textarea class="form-control">{{pedido.descricao}}</textarea>
 						</div>
 					</div>
 					
 					<div class="col-12 col-sm-4">
 						<div>
-							<img class="img-thumbnail" th:src="${pedido.urlImagem}" src="">
+							<img class="img-thumbnail" v-bind:src="pedido.urlImagem">
 						</div>
 					</div>
 					</div>
@@ -46,36 +46,28 @@
 				var app = new Vue({
 					el: '#ofertas',
 					data: {
-						pedidos: [
+						pedidos:[
 							{
+								"id":3,
 								"nomeProduto": "Tranya S2 Smartwatch",
 								"valorNegociado": 850,
 								"dataDaEntrega": "2022-07-12",
 								"urlProduto": "https://www.amazon.com.br/Tranya-Smartwatch-Rel%C3%B3gio-inteligente-Bluetooth/dp/B0BDDHB5Q1?ref=dlx_black_gd_dcl_img_15_93ee7a7a_dt_sl7_99",
 								"urlImagem": "https://m.media-amazon.com/images/I/71JOGEkJcyL._AC_SY450_.jpg",
-								"descricao": "Graças a um sensor de saúde 3 em 1, o relógio inteligente Tranya S2 pode fornecer rastreamento de saúde geral, permitindo rastrear com precisão a frequência cardíaca de 24 horas, oxigênio no sangue e qualidade do sono (profundo, leve e acordado).",
+								"descricao": "GraÃ§as a um sensor de saÃºde 3 em 1, o relÃ³gio inteligente Tranya S2 pode fornecer rastreamento de saï¿½de geral, permitindo rastrear com precisÃ£o a frequÃªncia cardÃ­aca de 24 horas, oxigÃªnio no sangue e qualidade do sono (profundo, leve e acordado).",
 								"status": "AGUARDANDO",
-								"user": {
-								"username": "matheus",
-								"password": "$2a$10$6LWmNXCgT4vzqWgTFtftvOHuD79SRDPxZL904HuLnfyExBUyb6Qqe",
-								"enabled": true
-							}
-							},
-							{
-								"nomeProduto": "Câmera Digital Canon",
+								},
+								{
+								"id":2,
+								"nomeProduto": "CÃ¢mera Digital Canon",
 								"valorNegociado": 700,
 								"dataDaEntrega": "2022-05-15",
 								"urlProduto": "https://www.amazon.com.br/dp/B09QL7J9Q8?ref_=Oct_DLandingS_D_5064cb7a_NA",
 								"urlImagem": "https://m.media-amazon.com/images/I/81pz06ySqrL._AC_SX450_.jpg",
-								"descricao": "Dê os seus primeiros passos na fotografia e comece a contar suas histórias com a DSLR EOS Rebel T7+ e a lente zoom compacta EF-S 18-55mm IS II. Esta câmera de utilização fácil e intuitiva é indicada para principiantes e entusiastas.",
+								"descricao": "DÃª os seus primeiros passos na fotografia e comece a contar suas histÃ³rias com a DSLR EOS Rebel T7+ e a lente zoom compacta EF-S 18-55mm IS II. Esta cÃ¢mera de utilizaÃ§Ã£o fÃ¡cil e intuitiva Ã© indicada para principiantes e entusiastas.",
 								"status": "AGUARDANDO",
-								"user": {
-								"username": "matheus",
-								"password": "$2a$10$6LWmNXCgT4vzqWgTFtftvOHuD79SRDPxZL904HuLnfyExBUyb6Qqe",
-								"enabled": true
 							}
-							}
-								]
+						]
 					}
 				});
 			}
