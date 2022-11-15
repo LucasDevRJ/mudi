@@ -33,6 +33,14 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	public List<Oferta> getOfertas() {
+		return ofertas;
+	}
+
+	public void setOfertas(List<Oferta> ofertas) {
+		this.ofertas = ofertas;
+	}
+
 	private String nomeProduto;
 	private BigDecimal valorNegociado;
 	private LocalDate dataDaEntrega;
@@ -41,7 +49,7 @@ public class Pedido {
 	private String descricao;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
-	private List<Pedido> ofertas;
+	private List<Oferta> ofertas;
 	
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
