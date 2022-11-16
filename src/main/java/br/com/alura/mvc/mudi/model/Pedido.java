@@ -50,6 +50,7 @@ public class Pedido {
 	private String descricao;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Oferta> ofertas;
 	
 	@Enumerated(EnumType.STRING)
