@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 import br.com.alura.mvc.mudi.model.Oferta;
 
 public class RequisicaoNovaOferta {
@@ -12,8 +15,12 @@ public class RequisicaoNovaOferta {
 
 	private Long pedidoId;
 	
+	@Pattern(regexp = "^\\d+(\\.\\d+{2})?$")
+	@NotNull
 	private String valor;
 	
+	@Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$")
+	@NotNull
 	private String dataDaEntrega;
 	
 	private String comentario;
