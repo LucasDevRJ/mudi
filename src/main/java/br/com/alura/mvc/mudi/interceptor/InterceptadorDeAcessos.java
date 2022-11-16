@@ -12,7 +12,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class InterceptadorDeAcessos extends HandlerInterceptorAdapter{
 	
-	private static List<Acesso> acessos = new ArrayList<Acesso>();
+	public static List<Acesso> acessos = new ArrayList<Acesso>();
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -37,9 +37,30 @@ public class InterceptadorDeAcessos extends HandlerInterceptorAdapter{
 		acessos.add(acesso);
 	}
 	
-	class Acesso {
+	public static class Acesso {
 		private String path;
 		private LocalDateTime data;
 		private Duration duracao;
+		public String getPath() {
+			return path;
+		}
+		public void setPath(String path) {
+			this.path = path;
+		}
+		public LocalDateTime getData() {
+			return data;
+		}
+		public void setData(LocalDateTime data) {
+			this.data = data;
+		}
+		public Duration getDuracao() {
+			return duracao;
+		}
+		public void setDuracao(Duration duracao) {
+			this.duracao = duracao;
+		}
+		
+		
 	}
+	
 }
